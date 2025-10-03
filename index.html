@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wisata Sumbar - Jelajahi Keindahan Sumatera Barat</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0F2573;
+            --primary-dark: #041D54;
+            --secondary: #F57C00;
+            --accent: #FFD700;
+            --bg: #F8F9FA;
+            --text: #212529;
+            --text-light: #6C757D;
+            --white: #FFFFFF;
+            --success: #28A745;
+            --border: #DEE2E6;
+            --shadow: 0 2px 8px rgba(0,0,0,0.1);
+            --shadow-lg: 0 4px 16px rgba(0,0,0,0.15);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .btn {
+            padding: 0.6rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+            color: var(--white);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(45, 137, 213, 0.7), rgba(19, 66, 196, 0.7)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23C62828" width="1200" height="600"/><path fill="%23F57C00" opacity="0.3" d="M0 300L50 280C100 260 200 220 300 200C400 180 500 180 600 200C700 220 800 260 900 260C1000 260 1100 220 1150 200L1200 180V600H0V300Z"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+            padding: 6rem 0;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .card-text {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        /* Grid Layout */
+        .grid {
+            display: grid;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .grid-4 {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+
+        /* Section */
+        section {
+            padding: 3rem 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        /* Map Section */
+        .map-region {
+            display: inline-block;
+            padding: 1rem 2rem;
+            margin: 0.5rem;
+            background: var(--white);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .map-region:hover {
+            border-color: var(--primary);
+            background: var(--primary);
+            color: var(--white);
+            transform: scale(1.05);
+        }
+
+        /* Category Pills */
+        .category-pills {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .category-pill {
+            padding: 0.8rem 1.5rem;
+            background: var(--white);
+            border: 2px solid var(--border);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .category-pill:hover, .category-pill.active {
+            background: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-close {
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--text-light);
+        }
+
+        /* Form */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .badge-success {
+            background: #D4EDDA;
+            color: #155724;
+        }
+
+        .badge-warning {
+            background: #FFF3CD;
+            color: #856404;
+        }
+
+        .badge-info {
+            background: #D1ECF1;
+            color: #0C5460;
+        }
+
+        /* Dashboard */
+        .dashboard {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .sidebar {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 12px;
+            height: fit-content;
+            position: sticky;
+            top: 80px;
+        }
+
+        .sidebar-item {
+            padding: 0.8rem 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .sidebar-item:hover, .sidebar-item.active {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* Community Chat */
+        .chat-container {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            margin-bottom: 1rem;
+        }
+
+        .chat-message {
+            background: var(--bg);
+            padding: 0.8rem;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+        }
+
+        .chat-message.own {
+            background: var(--primary);
+            color: var(--white);
+            text-align: right;
+        }
+
+        .chat-input {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+        }
+
+        /* Event Card */
+        .event-card {
+            display: flex;
+            gap: 1.5rem;
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            margin-bottom: 1rem;
+        }
+
+        .event-date {
+            background: var(--primary);
+            color: var(--white);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            min-width: 80px;
+        }
+
+        .event-date-day {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .event-details {
+            flex: 1;
+        }
+
+        /* Rating */
+        .rating {
+            color: var(--accent);
+        }
+
+        /* Hide/Show Pages */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .event-card {
+                flex-direction: column;
+            }
+        }
+
+        /* Notification Badge */
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Profile Card */
+        .profile-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin: 0 auto 1rem;
+        }
+
+        /* Stats */
+        .stats {
+            display: flex;
+            gap: 1rem;
+            justify-content: space-around;
+            margin: 1rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">🏔️ Wisata Sumbar</div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#" onclick="showPage('landing')">Beranda</a></li>
+                    <li><a href="#" onclick="showPage('explore')">Jelajah</a></li>
+                    <li><a href="#" onclick="showPage('events')">Event</a></li>
+                    <li><a href="#" onclick="showPage('community')">Komunitas</a></li>
+                </ul>
+                <div id="authButtons">
+                    <button class="btn btn-outline" onclick="showModal('loginModal')">Masuk</button>
+                    <button class="btn btn-primary" onclick="showModal('registerModal')">Daftar</button>
+                </div>
+                <div id="userMenu" style="display: none;">
+                    <button class="btn btn-primary" onclick="showPage('dashboard')">Dashboard</button>
+                    <button class="btn btn-outline" onclick="logout()">Keluar</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Landing Page -->
+    <div id="landingPage" class="page active">
+        <section class="hero">
+            <div class="container">
+                <h1>Jelajahi Keindahan Sumatera Barat</h1>
+                <p>Temukan destinasi wisata menakjubkan dan bergabung dengan komunitas pecinta wisata</p>
+                <button class="btn btn-primary" onclick="showModal('loginModal')">Mulai Jelajah →</button>
+            </div>
+        </section>
+
+        <section class="container">
+            <h2 class="section-title">Pilih Kabupaten/Kota</h2>
+            <div style="text-align: center;">
+                <div class="map-region" onclick="selectRegion('Padang')">📍 Padang</div>
+                <div class="map-region" onclick="selectRegion('Bukittinggi')">📍 Bukittinggi</div>
+                <div class="map-region" onclick="selectRegion('Tanah Datar')">📍 Tanah Datar</div>
+                <div class="map-region" onclick="selectRegion('Payakumbuh')">📍 Payakumbuh</div>
+                <div class="map-region" onclick="selectRegion('Solok')">📍 Solok</div>
+                <div class="map-region" onclick="selectRegion('Pesisir Selatan')">📍 Pesisir Selatan</div>
+            </div>
+        </section>
+
+        <section class="container">
+            <h2 class="section-title">Destinasi Trending</h2>
+            <div class="grid grid-cols-3 gap-6">
+            <div class="card shadow-lg rounded-xl overflow-hidden bg-white">
+                <div class="card-image h-48 w-full overflow-hidden">
+                <img src="jam.png" alt="Jam Gadang" class="w-full h-full object-cover">
+                </div>
+                <div class="p-4">
+                <h3 class="card-title text-lg font-semibold mb-2">Jam Gadang</h3>
+                <p class="card-text text-gray-600 mb-2">Ikon kota Bukittinggi yang terkenal dengan arsitektur uniknya</p>
+                <div class="rating text-yellow-500 font-medium">⭐ 4.8 <span class="text-gray-500">(234 ulasan)</span></div>
+                </div>
+            </div>
+
+            <div class="card shadow-lg rounded-xl overflow-hidden bg-white">
+                <div class="card-image h-48 w-full overflow-hidden">
+                <img src="carocok.png" alt="Pantai Carocok" class="w-full h-full object-cover">
+                </div>
+                <div class="p-4">
+                <h3 class="card-title text-lg font-semibold mb-2">Pantai Carocok</h3>
+                <p class="card-text text-gray-600 mb-2">Pantai indah dengan sunset menawan di Pesisir Selatan</p>
+                <div class="rating text-yellow-500 font-medium">⭐ 4.7 <span class="text-gray-500">(189 ulasan)</span></div>
+                </div>
+            </div>
+
+            <div class="card shadow-lg rounded-xl overflow-hidden bg-white">
+                <div class="card-image h-48 w-full overflow-hidden">
+                <img src="ngarai.png" alt="Ngarai Sianok" class="w-full h-full object-cover">
+                </div>
+                <div class="p-4">
+                <h3 class="card-title text-lg font-semibold mb-2">Ngarai Sianok</h3>
+                <p class="card-text text-gray-600 mb-2">Jurang cantik dengan pemandangan lembah hijau yang spektakuler</p>
+                <div class="rating text-yellow-500 font-medium">⭐ 4.9 <span class="text-gray-500">(312 ulasan)</span></div>
+                </div>
+            </div>
+            </div>
+
+        </section>
+
+        <section class="container">
+            <h2 class="section-title">Event Mendatang</h2>
+            <div class="event-card">
+                <div class="event-date">
+                    <div class="event-date-day">15</div>
+                    <div>Des</div>
+                </div>
+                <div class="event-details">
+                    <h3>Mendaki Gunung Marapi</h3>
+                    <p>📍 Bukittinggi • 👥 15/30 peserta • 💰 Rp 250.000</p>
+                    <span class="badge badge-success">Tersedia</span>
+                </div>
+                <button class="btn btn-primary" onclick="viewEventDetail()">Lihat Detail</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Dashboard Page -->
+    <div id="dashboardPage" class="page">
+        <div class="container">
+            <div class="dashboard">
+                <aside class="sidebar">
+                    <div class="sidebar-item active" onclick="showDashboardSection('home')">🏠 Beranda</div>
+                    <div class="sidebar-item" onclick="showDashboardSection('explore')">🗺️ Jelajah</div>
+                    <div class="sidebar-item" onclick="showDashboardSection('community')">👥 Komunitas</div>
+                    <div class="sidebar-item" onclick="showDashboardSection('events')">📅 Event Saya</div>
+                    <div class="sidebar-item" onclick="showDashboardSection('profile')">👤 Profil</div>
+                    <div class="sidebar-item" onclick="showDashboardSection('wishlist')">⭐ Wishlist</div>
+                </aside>
+
+                <main id="dashboardContent">
+                    <!-- Home Section -->
+                    <div id="homeSection" class="dashboard-section">
+                        <h2 class="section-title">Selamat Datang, Traveler! 👋</h2>
+                        
+                        <div class="stats">
+                            <div class="stat-item">
+                                <div class="stat-number">5</div>
+                                <div class="stat-label">Event Diikuti</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">3</div>
+                                <div class="stat-label">Komunitas</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">12</div>
+                                <div class="stat-label">Destinasi</div>
+                            </div>
+                        </div>
+
+                        <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Pilih Kabupaten/Kota</h3>
+                        <div class="grid grid-4">
+                            <div class="map-region" onclick="selectRegion('Padang')">📍 Padang</div>
+                            <div class="map-region" onclick="selectRegion('Bukittinggi')">📍 Bukittinggi</div>
+                            <div class="map-region" onclick="selectRegion('Tanah Datar')">📍 Tanah Datar</div>
+                            <div class="map-region" onclick="selectRegion('Payakumbuh')">📍 Payakumbuh</div>
+                            <div class="map-region" onclick="selectRegion('Solok')">📍 Solok</div>
+                            <div class="map-region" onclick="selectRegion('Pesisir Selatan')">📍 Pesisir Selatan</div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <!-- Region Page -->
+    <div id="regionPage" class="page">
+        <div class="container">
+            <button class="btn btn-outline" onclick="showPage('dashboard')" style="margin: 2rem 0;">← Kembali</button>
+            
+            <h1 class="section-title" id="regionTitle">Kabupaten Padang</h1>
+            
+            <div class="category-pills">
+                <div class="category-pill active" onclick="filterCategory('all')">Semua</div>
+                <div class="category-pill" onclick="filterCategory('alam')">🏞️ Wisata Alam</div>
+                <div class="category-pill" onclick="filterCategory('budaya')">🏛️ Wisata Budaya</div>
+                <div class="category-pill" onclick="filterCategory('sejarah')">📜 Wisata Sejarah</div>
+                <div class="category-pill" onclick="filterCategory('kuliner')">🍜 Wisata Kuliner</div>
+            </div>
+
+            <div class="grid grid-3" id="destinationsGrid">
+                <div class="card" data-category="alam">
+                    <div class="card-image" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
+                    <h3 class="card-title">Pantai Padang</h3>
+                    <p class="card-text">Pantai yang terkenal dengan sunset indah</p>
+                    <div class="rating">⭐ 4.6</div>
+                    <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;" onclick="viewDestination('Pantai Padang')">Lihat Detail</button>
+                </div>
+                <div class="card" data-category="kuliner">
+                    <div class="card-image" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);"></div>
+                    <h3 class="card-title">Sate Padang Mak Syukur</h3>
+                    <p class="card-text">Kuliner khas dengan bumbu kuah kental yang lezat</p>
+                    <div class="rating">⭐ 4.9</div>
+                    <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;" onclick="viewDestination('Sate Padang')">Lihat Detail</button>
+                </div>
+                <div class="card" data-category="budaya">
+                    <div class="card-image" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);"></div>
+                    <h3 class="card-title">Museum Adityawarman</h3>
+                    <p class="card-text">Museum dengan koleksi budaya Minangkabau</p>
+                    <div class="rating">⭐ 4.5</div>
+                    <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;" onclick="viewDestination('Museum Adityawarman')">Lihat Detail</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Destination Detail Page -->
+    <div id="destinationPage" class="page">
+        <div class="container">
+            <button class="btn btn-outline" onclick="showPage('region')" style="margin: 2rem 0;">← Kembali</button>
+            
+            <div class="card">
+                <div class="card-image" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); height: 400px;"></div>
+                
+                <h1 class="section-title" id="destinationTitle">Pantai Padang</h1>
+                <div class="rating" style="font-size: 1.2rem; margin-bottom: 1rem;">⭐ 4.6 (189 ulasan)</div>
+                
+                <div style="margin-bottom: 1rem;">
+                    <span class="badge badge-info">📍 Padang</span>
+                    <span class="badge badge-success">💰 Gratis</span>
+                    <span class="badge badge-warning">⏰ 24 Jam</span>
+                </div>
+
+                <h3>Deskripsi</h3>
+                <p style="margin-bottom: 1.5rem;">
+                    Pantai Padang adalah salah satu destinasi wisata paling terkenal di Sumatera Barat. 
+                    Terletak di pusat kota Padang, pantai ini menawarkan pemandangan sunset yang menakjubkan 
+                    dan suasana yang santai. Cocok untuk bersantai bersama keluarga atau teman.
+                </p>
+
+                <h3>Fasilitas</h3>
+                <ul style="margin-bottom: 1.5rem;">
+                    <li>✅ Area parkir luas</li>
+                    <li>✅ Toilet umum</li>
+                    <li>✅ Warung makan</li>
+                    <li>✅ Spot foto</li>
+                </ul>
+
+                <div class="grid grid-2">
+                    <button class="btn btn-primary" onclick="joinCommunity()">👥 Gabung Komunitas</button>
+                    <button class="btn btn-secondary" onclick="addToWishlist()">⭐ Tambah ke Wishlist</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Community Page -->
+    <div id="communityPage" class="page">
+        <div class="container">
+            <button class="btn btn-outline" onclick="showPage('dashboard')" style="margin: 2rem 0;">← Kembali</button>
+            
+            <div class="card">
+                <h1 class="section-title">Komunitas Wisata Padang</h1>
+                <p>👥 1,234 anggota • 245 online</p>
+                
+                <div class="category-pills">
+                    <div class="category-pill active" onclick="showCommunityTab('forum')">💬 Forum Diskusi</div>
+                    <div class="category-pill" onclick="showCommunityTab('chat')">💭 Chat Group</div>
+                    <div class="category-pill" onclick="showCommunityTab('events')">📅 Event</div>
+                </div>
+
+                <!-- Forum Tab -->
+                <div id="forumTab" class="community-tab">
+                    <button class="btn btn-primary" style="margin: 1rem 0;" onclick="showModal('createTopicModal')">+ Buat Topik Baru</button>
+                    
+                    <div class="card" style="margin-bottom: 1rem;">
+                        <h3>🔥 Rekomendasi penginapan budget di Padang?</h3>
+                        <p style="color: var(--text-light);">oleh @traveler123 • 2 jam lalu</p>
+                        <p>Hai semua! Ada yang punya rekomendasi penginapan yang budget-friendly tapi nyaman di sekitar Padang?</p>
+                        <div>
+                            <span class="badge badge-info">👍 15</span>
+                            <span class="badge badge-warning">💬 8 balasan</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Tips naik ke Puncak Gunung Marapi</h3>
+                        <p style="color: var(--text-light);">oleh @pendaki_pro • 5 jam lalu</p>
+                        <p>Buat yang mau mendaki Marapi, jangan lupa bawa jaket tebal dan air yang cukup. Perjalanan memakan waktu 4-5 jam.</p>
+                        <div>
+                            <span class="badge badge-info">👍 45</span>
+                            <span class="badge badge-warning">💬 23 balasan</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat Tab -->
+                <div id="chatTab" class="community-tab" style="display: none;">
+                    <div class="chat-container">
+                        <div class="chat-messages" id="chatMessages">
+                            <div class="chat-message">
+                                <strong>@wisatawan_aktif</strong>
+                                <p>Halo semua! Ada yang mau ikut trip ke Ngarai Sianok akhir pekan ini?</p>
+                                <small style="color: var(--text-light);">10:30</small>
+                            </div>
+                            <div class="chat-message">
+                                <strong>@explorer_sumbar</strong>
+                                <p>Wah menarik! Jam berapa berangkatnya?</p>
+                                <small style="color: var(--text-light);">10:35</small>
+                            </div>
+                            <div class="chat-message own">
+                                <p>Saya tertarik ikut! 🙋‍♂️</p>
+                                <small>10:40</small>
+                            </div>
+                        </div>
+                        <div class="chat-input">
+                            <input type="text" id="chatInput" placeholder="Tulis pesan...">
+                            <button class="btn btn-primary" onclick="sendMessage()">Kirim</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Events Tab -->
+                <div id="eventsTab" class="community-tab" style="display: none;">
+                    <button class="btn btn-primary" style="margin: 1rem 0;" onclick="showModal('createEventModal')">+ Buat Event Baru</button>
+                    
+                    <div class="event-card">
+                        <div class="event-date">
+                            <div class="event-date-day">15</div>
+                            <div>Des</div>
+                        </div>
+                        <div class="event-details">
+                            <h3>Mendaki Gunung Marapi</h3>
+                            <p>📍 Bukittinggi • 👥 15/30 peserta</p>
+                            <p>💰 Rp 250.000 • ⏰ 05.00 - 18.00 WIB</p>
+                            <span class="badge badge-success">Tersedia</span>
+                        </div>
+                        <button class="btn btn-primary" onclick="viewEventDetail()">Lihat Detail</button>
+                    </div>
+
+                    <div class="event-card">
+                        <div class="event-date">
+                            <div class="event-date-day">20</div>
+                            <div>Des</div>
+                        </div>
+                        <div class="event-details">
+                            <h3>Tur Kuliner Sate Padang</h3>
+                            <p>📍 Padang • 👥 8/15 peserta</p>
+                            <p>💰 Rp 150.000 • ⏰ 17.00 - 21.00 WIB</p>
+                            <span class="badge badge-success">Tersedia</span>
+                        </div>
+                        <button class="btn btn-primary" onclick="viewEventDetail()">Lihat Detail</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Event Detail Page -->
+    <div id="eventDetailPage" class="page">
+        <div class="container">
+            <button class="btn btn-outline" onclick="showPage('community')" style="margin: 2rem 0;">← Kembali</button>     
+            <div class="card">
+                <div class="card-image" style="height: 300px; overflow: hidden;">
+             <img src="gunung.png" alt="" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+
+                
+                <h1 class="section-title">Mendaki Gunung Marapi</h1>
+                
+                <div class="grid grid-2" style="margin-bottom: 1.5rem;">
+                    <div>
+                        <p><strong>📅 Tanggal:</strong> Sabtu, 15 Desember 2025</p>
+                        <p><strong>⏰ Waktu:</strong> 05.00 - 18.00 WIB</p>
+                        <p><strong>📍 Lokasi:</strong> Gunung Marapi, Bukittinggi</p>
+                    </div>
+                    <div>
+                        <p><strong>💰 Biaya:</strong> Rp 250.000/orang</p>
+                        <p><strong>👥 Kuota:</strong> 15/30 tersisa</p>
+                        <p><strong>👤 Organizer:</strong> Komunitas Pendaki Sumbar</p>
+                    </div>
+                </div>
+
+                <h3>Deskripsi Event</h3>
+                <p style="margin-bottom: 1.5rem;">
+                    Mari bergabung dalam petualangan mendaki Gunung Marapi! Event ini cocok untuk pemula maupun yang sudah berpengalaman. 
+                    Kita akan menikmati sunrise dari puncak dan pemandangan yang spektakuler. Guide berpengalaman akan menemani perjalanan kita.
+                </p>
+
+                <h3>Rundown Acara</h3>
+                <ul style="margin-bottom: 1.5rem;">
+                    <li>05.00 - Kumpul & Berangkat ke Basecamp</li>
+                    <li>06.30 - Mulai Pendakian</li>
+                    <li>09.00 - Istirahat & Snack</li>
+                    <li>11.00 - Tiba di Puncak</li>
+                    <li>12.00 - Makan Siang</li>
+                    <li>13.30 - Turun Gunung</li>
+                    <li>17.00 - Tiba di Basecamp</li>
+                    <li>18.00 - Pulang</li>
+                </ul>
+
+                <h3>Yang Perlu Dibawa</h3>
+                <ul style="margin-bottom: 1.5rem;">
+                    <li>✅ Jaket tebal & jas hujan</li>
+                    <li>✅ Sepatu hiking</li>
+                    <li>✅ Air minum 2-3 liter</li>
+                    <li>✅ Snack & makanan ringan</li>
+                    <li>✅ Obat-obatan pribadi</li>
+                    <li>✅ Power bank & headlamp</li>
+                </ul>
+
+                <h3>Peserta Terdaftar (15)</h3>
+                <div style="display: flex; gap: 0.5rem; margin-bottom: 2rem; flex-wrap: wrap;">
+                    <div class="badge badge-info" style="padding: 0.5rem 1rem;">👤 @traveler1</div>
+                    <div class="badge badge-info" style="padding: 0.5rem 1rem;">👤 @explorer2</div>
+                    <div class="badge badge-info" style="padding: 0.5rem 1rem;">👤 @hiker3</div>
+                    <div class="badge badge-info" style="padding: 0.5rem 1rem;">👤 @adventurer4</div>
+                    <div class="badge badge-info" style="padding: 0.5rem 1rem;">👤 +11 lainnya</div>
+                </div>
+
+                <button class="btn btn-primary" style="width: 100%; font-size: 1.1rem; padding: 1rem;" onclick="registerEvent()">
+                    Daftar Event Sekarang
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Page -->
+    <div id="profilePage" class="page">
+        <div class="container">
+            <button class="btn btn-outline" onclick="showPage('dashboard')" style="margin: 2rem 0;">← Kembali</button>
+            
+            <div class="grid grid-2">
+                <div class="profile-card">
+                    <div class="profile-avatar">T</div>
+                    <h2>Traveler Pro</h2>
+                    <p style="color: var(--text-light);">@traveler_pro</p>
+                    <p style="margin: 1rem 0;">✨ Explorer Sumbar • 🏆 Adventure Master</p>
+                    
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-number">5</div>
+                            <div class="stat-label">Event</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">3</div>
+                            <div class="stat-label">Komunitas</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">12</div>
+                            <div class="stat-label">Destinasi</div>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Edit Profil</button>
+                </div>
+
+                <div>
+                    <div class="card" style="margin-bottom: 1rem;">
+                        <h3>📅 Event Saya</h3>
+                        <div style="margin-top: 1rem;">
+                            <p>✅ Mendaki Gunung Marapi - 15 Des 2025</p>
+                            <p>✅ Tur Kuliner Sate Padang - 20 Des 2025</p>
+                            <p>✅ Jelajah Ngarai Sianok - 25 Des 2025</p>
+                        </div>
+                    </div>
+
+                    <div class="card" style="margin-bottom: 1rem;">
+                        <h3>👥 Komunitas Saya</h3>
+                        <div style="margin-top: 1rem;">
+                            <p>• Komunitas Wisata Padang</p>
+                            <p>• Pendaki Gunung Sumbar</p>
+                            <p>• Pecinta Kuliner Minang</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>⭐ Wishlist Destinasi</h3>
+                        <div style="margin-top: 1rem;">
+                            <p>❤️ Danau Maninjau</p>
+                            <p>❤️ Istana Pagaruyung</p>
+                            <p>❤️ Pulau Cubadak</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Masuk ke Akun</h2>
+                <span class="modal-close" onclick="hideModal('loginModal')">✕</span>
+            </div>
+            <form onsubmit="login(event)">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" required placeholder="nama@email.com">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Masuk</button>
+                <p style="text-align: center; margin-top: 1rem;">
+                    Belum punya akun? <a href="#" onclick="hideModal('loginModal'); showModal('registerModal');" style="color: var(--primary);">Daftar sekarang</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Buat Akun Baru</h2>
+                <span class="modal-close" onclick="hideModal('registerModal')">✕</span>
+            </div>
+            <form onsubmit="register(event)">
+                <div class="form-group">
+                    <label>Nama Lengkap</label>
+                    <input type="text" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" required placeholder="nama@email.com">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Daftar</button>
+                <p style="text-align: center; margin-top: 1rem;">
+                    Sudah punya akun? <a href="#" onclick="hideModal('registerModal'); showModal('loginModal');" style="color: var(--primary);">Masuk</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Create Topic Modal -->
+    <div id="createTopicModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Buat Topik Baru</h2>
+                <span class="modal-close" onclick="hideModal('createTopicModal')">✕</span>
+            </div>
+            <form onsubmit="createTopic(event)">
+                <div class="form-group">
+                    <label>Judul Topik</label>
+                    <input type="text" required placeholder="Tulis judul yang menarik...">
+                </div>
+                <div class="form-group">
+                    <label>Isi Diskusi</label>
+                    <textarea rows="5" required placeholder="Bagikan pertanyaan atau informasi Anda..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Posting</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Create Event Modal -->
+    <div id="createEventModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Buat Event Baru</h2>
+                <span class="modal-close" onclick="hideModal('createEventModal')">✕</span>
+            </div>
+            <form onsubmit="createEvent(event)">
+                <div class="form-group">
+                    <label>Nama Event</label>
+                    <input type="text" required placeholder="Contoh: Mendaki Gunung Marapi">
+                </div>
+                <div class="form-group">
+                    <label>Tanggal</label>
+                    <input type="date" required>
+                </div>
+                <div class="form-group">
+                    <label>Lokasi</label>
+                    <input type="text" required placeholder="Contoh: Bukittinggi">
+                </div>
+                <div class="form-group">
+                    <label>Kuota Peserta</label>
+                    <input type="number" required placeholder="30">
+                </div>
+                <div class="form-group">
+                    <label>Biaya (Rp)</label>
+                    <input type="number" required placeholder="250000">
+                </div>
+                <div class="form-group">
+                    <label>Deskripsi</label>
+                    <textarea rows="5" required placeholder="Jelaskan detail event Anda..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Publikasikan Event</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Event Registration Confirmation Modal -->
+    <div id="confirmModal" class="modal">
+        <div class="modal-content" style="text-align: center;">
+            <div style="font-size: 4rem; margin-bottom: 1rem;">✅</div>
+            <h2>Pendaftaran Berhasil!</h2>
+            <p style="margin: 1rem 0;">Anda telah terdaftar dalam event ini. Cek email untuk informasi lebih lanjut.</p>
+            <button class="btn btn-primary" onclick="hideModal('confirmModal')">OK</button>
+        </div>
+    </div>
+
+    <script>
+        // State Management
+        let isLoggedIn = false;
+        let currentRegion = '';
+
+        // Page Navigation
+        function showPage(pageName) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            const pageMap = {
+                'landing': 'landingPage',
+                'dashboard': 'dashboardPage',
+                'region': 'regionPage',
+                'destination': 'destinationPage',
+                'community': 'communityPage',
+                'eventDetail': 'eventDetailPage',
+                'profile': 'profilePage'
+            };
+            
+            const pageId = pageMap[pageName];
+            if (pageId) {
+                document.getElementById(pageId).classList.add('active');
+                window.scrollTo(0, 0);
+            }
+        }
+
+        // Modal Functions
+        function showModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+        }
+
+        function hideModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        // Authentication
+        function login(event) {
+            event.preventDefault();
+            isLoggedIn = true;
+            document.getElementById('authButtons').style.display = 'none';
+            document.getElementById('userMenu').style.display = 'block';
+            hideModal('loginModal');
+            showPage('dashboard');
+            alert('Login berhasil! Selamat datang di Wisata Sumbar 🎉');
+        }
+
+        function register(event) {
+            event.preventDefault();
+            isLoggedIn = true;
+            document.getElementById('authButtons').style.display = 'none';
+            document.getElementById('userMenu').style.display = 'block';
+            hideModal('registerModal');
+            showPage('dashboard');
+            alert('Registrasi berhasil! Akun Anda telah dibuat 🎉');
+        }
+
+        function logout() {
+            isLoggedIn = false;
+            document.getElementById('authButtons').style.display = 'block';
+            document.getElementById('userMenu').style.display = 'none';
+            showPage('landing');
+            alert('Anda telah keluar. Sampai jumpa lagi! 👋');
+        }
+
+        // Region Selection
+        function selectRegion(region) {
+            if (!isLoggedIn) {
+                showModal('loginModal');
+                return;
+            }
+            currentRegion = region;
+            document.getElementById('regionTitle').textContent = 'Kabupaten ' + region;
+            showPage('region');
+        }
+
+        // Category Filter
+        function filterCategory(category) {
+            document.querySelectorAll('.category-pill').forEach(pill => {
+                pill.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            const cards = document.querySelectorAll('#destinationsGrid .card');
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Destination
+        function viewDestination(name) {
+            document.getElementById('destinationTitle').textContent = name;
+            showPage('destination');
+        }
+
+        // Community
+        function joinCommunity() {
+            showPage('community');
+            alert('Selamat! Anda telah bergabung dengan komunitas 🎉');
+        }
+
+        function showCommunityTab(tab) {
+            document.querySelectorAll('.community-tab').forEach(t => {
+                t.style.display = 'none';
+            });
+            
+            const tabMap = {
+                'forum': 'forumTab',
+                'chat': 'chatTab',
+                'events': 'eventsTab'
+            };
+            
+            document.getElementById(tabMap[tab]).style.display = 'block';
+            
+            document.querySelectorAll('.category-pill').forEach(pill => {
+                pill.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        // Chat
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (message) {
+                const messagesDiv = document.getElementById('chatMessages');
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'chat-message own';
+                messageDiv.innerHTML = `<p>${message}</p><small>${new Date().toLocaleTimeString('id-ID', {hour: '2-digit', minute: '2-digit'})}</small>`;
+                messagesDiv.appendChild(messageDiv);
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+                input.value = '';
+            }
+        }
+
+        // Event
+        function viewEventDetail() {
+            showPage('eventDetail');
+        }
+
+        function registerEvent() {
+            showModal('confirmModal');
+        }
+
+        function createTopic(event) {
+            event.preventDefault();
+            hideModal('createTopicModal');
+            alert('Topik berhasil dibuat! 🎉');
+        }
+
+        function createEvent(event) {
+            event.preventDefault();
+            hideModal('createEventModal');
+            alert('Event berhasil dipublikasikan! 🎉');
+        }
+
+        // Dashboard Sections
+        function showDashboardSection(section) {
+            document.querySelectorAll('.sidebar-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            if (section === 'profile') {
+                showPage('profile');
+            } else if (section === 'community') {
+                showPage('community');
+            } else if (section === 'explore') {
+                // Show region selection
+                document.getElementById('homeSection').style.display = 'block';
+            }
+        }
+
+        // Wishlist
+        function addToWishlist() {
+            alert('Destinasi ditambahkan ke wishlist! ⭐');
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('active');
+            }
+        }
+
+        // Enter key for chat
+        document.addEventListener('DOMContentLoaded', function() {
+            const chatInput = document.getElementById('chatInput');
+            if (chatInput) {
+                chatInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        sendMessage();
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
